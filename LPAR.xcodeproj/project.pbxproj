@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C500280C1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */; };
 		C512397F1FEF67B800663195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C512397E1FEF67B800663195 /* AppDelegate.swift */; };
 		C51239811FEF67B800663195 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C51239801FEF67B800663195 /* art.scnassets */; };
 		C51239831FEF67B800663195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51239821FEF67B800663195 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		C512397B1FEF67B800663195 /* LPAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C512397E1FEF67B800663195 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C51239801FEF67B800663195 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				C512397E1FEF67B800663195 /* AppDelegate.swift */,
 				C51239801FEF67B800663195 /* art.scnassets */,
 				C51239821FEF67B800663195 /* ViewController.swift */,
+				C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */,
 				C51239841FEF67B800663195 /* Main.storyboard */,
 				C51239871FEF67B800663195 /* Assets.xcassets */,
 				C51239891FEF67B800663195 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C500280C1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				C51239831FEF67B800663195 /* ViewController.swift in Sources */,
 				C512397F1FEF67B800663195 /* AppDelegate.swift in Sources */,
 			);

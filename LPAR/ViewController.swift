@@ -10,9 +10,33 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+enum menuButtonState: String {
+    case start = "Tap hereto start AR"
+    case stop = "Stop tracking more planes"
+    case select = "Tap plane to select"
+    case reset = "Reset"
+}
 
-    @IBOutlet var sceneView: ARSCNView!
+class ViewController: UIViewController {
+
+   
+    @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    var arState = menuButtonState.start
+    var scene = SCNScene()
+    var configuration = ARWorldTrackingConfiguration()
+    
+    var planeIdentifiers = [UUID]()
+    var anchors = [ARAnchor]()
+    var nodes = [SCNNode]()
+    var planeNodesCount = 0
+    var planeHeight: CGFloat = 0.01
+    var disableTracking = false
+    var isPlaneSelected = false
+    
+    var lampNode: SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +48,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+ //       let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
-        sceneView.scene = scene
+        self.sceneView.scene = scene
+        self.sceneView.autoenablesDefaultLighting = true
+        
+        // misc scene setup
+        self.sceneView.showsStatistics = true
+        self.sceneView.autoenablesDefaultLighting = true
+        
+        // menuButton initialize
+        menuButton.setTitle(arState.rawValue , for: .normal)
+        
+        // coordinate functions & methods
+        setUpScenesAndNodes()
     }
+    
+    //
+    // setUp functions
+    //
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,16 +94,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
 
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
+
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
