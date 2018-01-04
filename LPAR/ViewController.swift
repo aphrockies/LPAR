@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 
 enum menuButtonState: String {
-    case start = "Tap hereto start AR"
+    case start = "Tap here to start AR"
     case stop = "Stop tracking more planes"
     case select = "Tap plane to select"
     case reset = "Reset"
@@ -46,9 +46,6 @@ class ViewController: UIViewController {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        // Create a new scene
- //       let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
         self.sceneView.scene = scene
@@ -110,4 +107,51 @@ class ViewController: UIViewController {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    
+    //
+    // Support Functions
+    //
+    
+
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        
+        print("menuButtonTapped")
+        switch arState {
+        case .start:
+            disableTracking = false
+            setSessionConfiguration(pd: ARWorldTrackingConfiguration.PlaneDetection.horizontal, runOPtions: ARSession.RunOptions.resetTracking)
+            arState = .stop
+            menuButton.setTitle(menuButtonState.stop.rawValue, for: .normal)
+            
+        case .stop:
+            disableTracking = true
+            arState = menuButtonState.select
+            menuButton.setTitle(menuButtonState.select.rawValue, for: .normal)
+            
+        case .select:
+            arState = menuButtonState.reset
+            menuButton.setTitle(menuButtonState.reset.rawValue, for: .normal)
+            break
+        case .reset:
+            disableTracking = false
+            arState = .start
+            menuButton.setTitle(menuButtonState.start.rawValue, for: .normal)
+            resetTapped()
+            configuration = ARWorldTrackingConfiguration()
+            break
+        }
+        
+    }
+    
+    func resetTapped() {
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }

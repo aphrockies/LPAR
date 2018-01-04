@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C500280C1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */; };
+		C500280E1FFEA51B00DA7F68 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = C500280D1FFEA51B00DA7F68 /* Notes */; };
 		C512397F1FEF67B800663195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C512397E1FEF67B800663195 /* AppDelegate.swift */; };
 		C51239811FEF67B800663195 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C51239801FEF67B800663195 /* art.scnassets */; };
 		C51239831FEF67B800663195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51239821FEF67B800663195 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		C500280D1FFEA51B00DA7F68 /* Notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		C512397B1FEF67B800663195 /* LPAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C512397E1FEF67B800663195 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C51239801FEF67B800663195 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				C51239871FEF67B800663195 /* Assets.xcassets */,
 				C51239891FEF67B800663195 /* LaunchScreen.storyboard */,
 				C512398C1FEF67B800663195 /* Info.plist */,
+				C500280D1FFEA51B00DA7F68 /* Notes */,
 			);
 			path = LPAR;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51239811FEF67B800663195 /* art.scnassets in Resources */,
+				C500280E1FFEA51B00DA7F68 /* Notes in Resources */,
 				C512398B1FEF67B800663195 /* LaunchScreen.storyboard in Resources */,
 				C51239881FEF67B800663195 /* Assets.xcassets in Resources */,
 				C51239861FEF67B800663195 /* Main.storyboard in Resources */,
