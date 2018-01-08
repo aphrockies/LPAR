@@ -4,3 +4,6 @@
 2018JAN04-Commit
  - added AR render functions
 
+2018JAN08-Commit:
+- change General > Deployment Info to iPhone only
+- added 1024x1024 appicon

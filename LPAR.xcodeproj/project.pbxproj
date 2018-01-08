@@ -61,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C512397E1FEF67B800663195 /* AppDelegate.swift */,
+				C500280D1FFEA51B00DA7F68 /* Notes */,
 				C51239801FEF67B800663195 /* art.scnassets */,
 				C51239821FEF67B800663195 /* ViewController.swift */,
 				C500280B1FFC374B00DA7F68 /* ViewController+ARSCNViewDelegate.swift */,
@@ -68,7 +69,6 @@
 				C51239871FEF67B800663195 /* Assets.xcassets */,
 				C51239891FEF67B800663195 /* LaunchScreen.storyboard */,
 				C512398C1FEF67B800663195 /* Info.plist */,
-				C500280D1FFEA51B00DA7F68 /* Notes */,
 			);
 			path = LPAR;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = crom.LPAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = crom.LPAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
