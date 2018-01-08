@@ -67,6 +67,40 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         return node
     }
     
+    // Called when a new node has been mapped to the given anchor
+    public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        planeNodesCount += 1
+        if node.childNodes.count > 0 && planeNodesCount % 2 == 0 {
+            node.childNodes[0].geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+        }
+    }
+    
+    // Called when a node has been updated with data from the given anchor
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if disableTracking {
+            return
+        }
+        if let planeAnchor = anchor as? ARPlaneAnchor {
+            if anchors.contains(planeAnchor) {
+                if node.childNodes.count > 0 {
+                    let planeNode = node.childNodes.first!
+                    planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
+                    if let plane = planeNode.geometry as? SCNBox {
+                        plane.width = CGFloat(planeAnchor.extent.x)
+                        plane.length = CGFloat(planeAnchor.extent.z)
+                        plane.height = planeHeight
+                    }
+                }
+            }
+        }
+    }
+    
+    /* Called when a mapped node has been removed from the scene graph for the given anchor.
+     This delegate did not got called for every node removal in this app. Still need to rearch on what I am missing.
+     */
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        print("remove node delegate called")
+    }
     
     
     

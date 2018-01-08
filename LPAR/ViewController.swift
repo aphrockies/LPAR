@@ -145,13 +145,73 @@ class ViewController: UIViewController {
     }
     
     func resetTapped() {
+        if anchors.count > 0 {
+            for index in 0...anchors.count - 1 {
+                sceneView.node(for: anchors[index])?.removeFromParentNode()
+            }
+            anchors.removeAll()
+        }
+        
+        for node in sceneView.scene.rootNode.childNodes {
+            node.removeFromParentNode()
+        }
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: sceneView)
+        
+        if arState == .select {
+            selectExistinPlane(location: location)
+        }
+        if arState == .reset && anchors.count > 0 {
+            let hitResults = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
+            if hitResults.count > 0 {
+                let result: ARHitTestResult = hitResults.first!
+                
+                let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+                let newLampNode = lampNode?.clone()
+                if let newLampNode = newLampNode {
+                    newLampNode.position = newLocation
+                    sceneView.scene.rootNode.addChildNode(newLampNode)
+                }
+            }
+        }
+    }
     
+    func selectExistinPlane(location: CGPoint) {
+        let hitResults = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
+        if hitResults.count > 0 {
+            let result: ARHitTestResult = hitResults.first!
+            if let planeAnchor = result.anchor as? ARPlaneAnchor {
+                for var index in 0...anchors.count - 1 {
+                    if anchors[index].identifier != planeAnchor.identifier {
+                        sceneView.node(for: anchors[index])?.removeFromParentNode()
+                    }
+                    index += 1
+                }
+                anchors = [planeAnchor]
+                setPlaneTexture(node: sceneView.node(for: anchors[0])!)
+            }
+        }
+        
+    }
     
-    
-    
-    
+    func setPlaneTexture(node: SCNNode) {
+        if let geometryNode = node.childNodes.first {
+            if node.childNodes.count > 0 {
+  //              geometryNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "./art.scnassets/wood.png")
+                geometryNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "./art.scnassets/MessMtLion.png")
+                
+                geometryNode.geometry?.firstMaterial?.locksAmbientWithDiffuse = true
+                geometryNode.geometry?.firstMaterial?.diffuse.wrapS = SCNWrapMode.repeat
+                geometryNode.geometry?.firstMaterial?.diffuse.wrapT = SCNWrapMode.repeat
+                geometryNode.geometry?.firstMaterial?.diffuse.mipFilter = SCNFilterMode.linear
+            }
+            arState = menuButtonState.reset
+            menuButton.setTitle(menuButtonState.reset.rawValue, for: .normal)
+        }
+    }
     
 }
