@@ -12,6 +12,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     func setUpScenesAndNodes() {
         
+        print("setUpScenesAndNodes")
         let tempScene = SCNScene(named: "art.scnassets/cyclinder.scn")
         lampNode = tempScene?.rootNode.childNode(withName: "Cylinder", recursively: true)
         
@@ -43,6 +44,8 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
      */
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+ 
+        print("renderer: nodeFor")
         if disableTracking {
             return nil
         }
@@ -69,6 +72,8 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     // Called when a new node has been mapped to the given anchor
     public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+
+        print("render: didAdd")
         planeNodesCount += 1
         if node.childNodes.count > 0 && planeNodesCount % 2 == 0 {
             node.childNodes[0].geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
@@ -77,6 +82,8 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     // Called when a node has been updated with data from the given anchor
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+        print("renderer: didUpdate")
         if disableTracking {
             return
         }

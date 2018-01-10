@@ -145,6 +145,8 @@ class ViewController: UIViewController {
     }
     
     func resetTapped() {
+        
+        print("resetTapped")
         if anchors.count > 0 {
             for index in 0...anchors.count - 1 {
                 sceneView.node(for: anchors[index])?.removeFromParentNode()
@@ -159,6 +161,8 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        print("touchesBegan")
         let touch = touches.first!
         let location = touch.location(in: sceneView)
         
@@ -181,6 +185,8 @@ class ViewController: UIViewController {
     }
     
     func selectExistinPlane(location: CGPoint) {
+        
+        print("selectExistingPlane")
         let hitResults = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
         if hitResults.count > 0 {
             let result: ARHitTestResult = hitResults.first!
@@ -199,6 +205,8 @@ class ViewController: UIViewController {
     }
     
     func setPlaneTexture(node: SCNNode) {
+        
+        print("setPlaneTexture")
         if let geometryNode = node.childNodes.first {
             if node.childNodes.count > 0 {
   //              geometryNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "./art.scnassets/wood.png")
